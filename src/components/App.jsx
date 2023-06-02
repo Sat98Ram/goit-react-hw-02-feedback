@@ -11,17 +11,18 @@ export class App extends Component {
     bad: 0,
   };
 
-  onCount = e => {
+  onCount = option => {
     this.setState(prevState => {
-      return { [e.target.name]: prevState[e.target.name] + 1 };
+      return { [option]: prevState[option] + 1 };
     });
   };
-  countTotalFeedback = optionsObj => {
-    let count = 0;
-    for (let key in optionsObj) {
-      count += optionsObj[key];
-    }
-    return count;
+  countTotalFeedback = () => {
+    return Object.values(this.state).reduce((acc, item) => acc + item, 0);
+    // let count = 0;
+    // for (let key in optionsObj) {
+    //   count += optionsObj[key];
+    // }
+    // return count;
   };
 
   countPositiveFeedbackPercentage = state => {
